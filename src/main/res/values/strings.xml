@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="nav_home">HOME</string>
+    <string name="nav_search">SEARCH</string>
+    <string name="nav_favorite">FAVORITE</string>
+    <string name="nav_notification">NOTIFICATION</string>
+    <string name="nav_account">ACCOUNT</string>
+</resources>
