@@ -15,9 +15,6 @@ import java.util.List;
 public class recipes extends AppCompatActivity {
 
 
-    //private TextView needfood=(TextView)findViewById( R.id.tv_needfood );
-   // private EditText people=(EditText)findViewById( R.id.et_people );
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +24,8 @@ public class recipes extends AppCompatActivity {
         //needfood.setText( f(needfood) );
     }
 
-    /*public String f(TextView nf){
+    /*
+        public String f(TextView nf){
         String f="";
         String[] nf2=needfood.toString().split( "," );
         for (int i=0;i<nf2.length;i++){
@@ -37,8 +35,8 @@ public class recipes extends AppCompatActivity {
             f+=nf2[i];
         }
         return f;
-
-    }*/
+    }
+    */
 
 
 }

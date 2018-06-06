@@ -1,4 +1,5 @@
 package com.example.myapplication;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,20 +9,21 @@ import android.widget.CursorTreeAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-/*
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;*/
+import com.google.firebase.database.ValueEventListener;
+
 
 public class newrecipe extends AppCompatActivity {
 
-    /*
+  /*
     private FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase=firebaseDatabase.getReference();
     private DataSnapshot id;*/
-// ...
+
 
 
     @Override
@@ -32,16 +34,13 @@ public class newrecipe extends AppCompatActivity {
         final String[] type = {"中式", "日式", "法式", "德式", "義式", "美式", "英式", "葡式", "西班牙式", "俄式", "泰式", "韓式"};
         ArrayAdapter<String> typeList = new ArrayAdapter<>(newrecipe.this, android.R.layout.simple_spinner_dropdown_item, type);
         spinner1.setAdapter(typeList);
-
-
-
-
     }
 
-    /*private void writeNewRecipe(String recipeName, String tool, String time,
-                              String hard,String ingredient,String type,
-                              String taste,String topic,String people,String step,
-                              String publisher,DataSnapshot id) {
+    /*
+        private void writeNewRecipe(String recipeName, String tool, String time,
+        String hard,String ingredient,String type,
+        String taste,String topic,String people,String step,
+        String publisher,DataSnapshot id) {
         String recipeName=findViewById( R.id.newrecipe_recipeName ).toString();
         String tool=findViewById( R.id.newrecipe__tool).toString();
         String time=findViewById( R.id.newrecipe__time ).toString()+" min";
