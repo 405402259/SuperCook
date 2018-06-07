@@ -40,7 +40,7 @@ public class createaccount extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(createaccount.this, "Registration successful", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(createaccount.this, signin.class);
+                            Intent i = new Intent(createaccount.this, index.class);
                             startActivity(i);
                         }
                         else

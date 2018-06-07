@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp"
         tools:ignore="MissingConstraints"
-        android:background="@drawable/ic_launcher_background">
+        android:background="@drawable/ic_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_alignParentBottom="true">
+            android:paddingBottom="120dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -258,31 +259,70 @@
                     android:hint="#主題"/>
                 </LinearLayout>
             </LinearLayout>
+            </ScrollView>
+            </LinearLayout>
+        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_above="@+id/tool"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/newrecipe_addNewRecipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="70dp"
+                        android:onClick="submit"
+                        android:text="新增食譜"/>
+
+                    <Button
+                        android:id="@+id/newrecipe_mod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="編輯食譜"/>
+
+                </LinearLayout>
+
         <LinearLayout
             android:id="@+id/tool"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center">
-            <Button
-                android:id="@+id/newrecipe_addNewRecipe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="70dp"
-                android:onClick="submit"
-                android:text="新增食譜"/>
+            android:background="#FFFFFF">
 
-            <Button
-                android:id="@+id/newrecipe_mod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="編輯食譜"/>
+            <ImageButton
+                android:id="@+id/search"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="5dp"
+                app:srcCompat="@drawable/ic_search" />
+
+            <ImageButton
+                android:id="@+id/star"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="30dp"
+                android:background="#00000000"
+                app:srcCompat="@drawable/ic_love" />
+
+            <ImageButton
+                android:id="@+id/message"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="30dp"
+                android:background="#00000000"
+                app:srcCompat="@drawable/ic_bell" />
+
+            <ImageButton
+                android:id="@+id/person"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="30dp"
+                android:background="#00000000"
+                app:srcCompat="@drawable/ic_people" />
         </LinearLayout>
-
-    </ScrollView>
-            </LinearLayout>
-        </LinearLayout>
-
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

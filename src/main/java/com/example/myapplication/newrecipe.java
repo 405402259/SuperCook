@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.CursorTreeAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,13 +20,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class newrecipe extends AppCompatActivity {
+
+
 
   /*
     private FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase=firebaseDatabase.getReference();
     private DataSnapshot id;*/
-
 
 
     @Override
@@ -51,37 +54,33 @@ public class newrecipe extends AppCompatActivity {
         String step=findViewById( R.id.newrecipe_step ).toString();
         String publisher=findViewById( R.id.mypage_username ).toString();
 
-
-        Recipe rcp = new Recipe(recipeName,tool,time,hard,ingredient,"中式","salt",topic,people,null,step,null,publisher,true);
-        mDatabase.child("recipe").child(String.valueOf( n(id) )).setValue(rcp);
-
-    }*/
-/*
-    public long n(DataSnapshot dataSnapshot) {
-       return dataSnapshot.getChildrenCount();
-
     }
-    public void submit(View view){
+
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
     }
 
     @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+    }
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
     }
 
     @Override
     public void onCancelled(DatabaseError databaseError) {
 
-    }*/
-
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        writeNewRecipe(id);
     }
 
-    private void writeNewRecipe(DataSnapshot childrenCount) {
+
+
+
+
+    /*private void writeNewRecipe(DataSnapshot childrenCount) {
         String recipeName=findViewById( R.id.newrecipe_recipeName ).toString();
         String tool=findViewById( R.id.newrecipe__tool).toString();
         String time=findViewById( R.id.newrecipe__time ).toString()+" min";
@@ -94,6 +93,7 @@ public class newrecipe extends AppCompatActivity {
 
 
         Recipe rcp = new Recipe(recipeName,tool,time,hard,ingredient,"中式","salt",topic,people,null,step,null,publisher,true);
-        mDatabase.child("recipe").child(String.valueOf( n(id) )).setValue(rcp);
-    }*/
+        mDatabase.child("recipe").child(String.valueOf( n(id) )).setValue(rcp);*/
+
+
 }
