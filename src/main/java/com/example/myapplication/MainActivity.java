@@ -9,6 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.myapplication.AccountFragment;
+import com.example.myapplication.FavoriteFragment;
+import com.example.myapplication.HomeFragment;
+import com.example.myapplication.NotificationFagment;
+import com.example.myapplication.R;
+import com.example.myapplication.SearchFragment;
+
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNav;
     private FrameLayout mMainFrame;
@@ -16,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private HomeFragment homeFragment;
     private SearchFragment searchFragment;
     private FavoriteFragment favoriteFragment;
-    private NotificationFragment notificationFragment;
+    private NotificationFagment notificationFagment;
     private AccountFragment accountFragment;
 
     @Override
@@ -30,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         searchFragment = new SearchFragment();
         favoriteFragment = new FavoriteFragment();
-        notificationFragment = new NotificationFragment();
+        notificationFagment = new NotificationFagment();
         accountFragment = new AccountFragment();
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.nav_notification:
                         mMainNav.setItemBackgroundResource(R.color.colorAccent);
-                        setFragment(notificationFragment);
+                        setFragment(notificationFagment);
                         return true;
 
                     case R.id.nav_account:

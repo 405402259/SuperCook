@@ -3,8 +3,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
-
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -44,12 +46,10 @@ public class find extends AppCompatActivity implements ChildEventListener {
     private ArrayAdapter<String> searchList;
     private boolean mIsSearch = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find);
-
 
         Spinner spinner1 = (Spinner)findViewById(R.id.find_type);
         final String[] type = {"中式", "日式", "法式", "德式", "義式", "美式", "英式", "葡式", "西班牙式", "俄式", "泰式", "韓式"};
@@ -98,13 +98,11 @@ public class find extends AppCompatActivity implements ChildEventListener {
                 String.valueOf(dataSnapshot.child("recipeName").getValue()));
     }
 
-
     @Override
     public void onChildRemoved(DataSnapshot dataSnapshot) {
         searchList.remove(
                 String.valueOf(dataSnapshot.child("recipeName").getValue()));
     }
-
 
     @Override
     public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
@@ -115,5 +113,10 @@ public class find extends AppCompatActivity implements ChildEventListener {
     @Override
     public void onCancelled(DatabaseError databaseError) { }
 }
+
+
+
+
+
 
 

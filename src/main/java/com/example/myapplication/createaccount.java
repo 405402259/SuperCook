@@ -21,6 +21,7 @@ public class createaccount extends AppCompatActivity {
     private EditText txtPassword;
     private FirebaseAuth firebaseAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class createaccount extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(createaccount.this, "Registration successful", Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(createaccount.this, index.class);
+                            Intent i = new Intent(createaccount.this, signin.class);
                             startActivity(i);
                         }
                         else
