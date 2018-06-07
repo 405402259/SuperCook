@@ -21,7 +21,6 @@ public class createaccount extends AppCompatActivity {
     private EditText txtPassword;
     private FirebaseAuth firebaseAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

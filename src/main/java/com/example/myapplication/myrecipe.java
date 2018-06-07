@@ -7,11 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.example.myapplication.R;
-import com.example.myapplication.profile;
 
 public class myrecipe extends AppCompatActivity {
     private Button myrecipe_insert;
@@ -34,51 +30,40 @@ public class myrecipe extends AppCompatActivity {
         });
 
         myrecipe_del = findViewById(R.id.myrecipe_del);
-        myrecipe_del.setOnClickListener(listener);
+        myrecipe_del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.myrecipe_del) {
+                    new AlertDialog.Builder(myrecipe.this)
+                            .setTitle("對話視窗")
+                            .setIcon(R.mipmap.ic_launcher)
+                            .setMessage("確定刪除嗎？")
+                            .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    }
+                            )
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .show();
+                }
+            }
+        });
 
 
         r = (TextView) findViewById(R.id.myrecipe_tv);
         r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(myrecipe.this,recipes.class);
-                startActivity(intent);
-            }
-        });
-
-        myrecipe_insert = findViewById(R.id.myrecipe_insert);
-        myrecipe_insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(myrecipe.this, newrecipe.class);
+                Intent intent = new Intent(myrecipe.this, recipes.class);
                 startActivity(intent);
             }
         });
     }
-
-    private Button.OnClickListener listener = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v.getId() == R.id.myrecipe_del) {
-                new AlertDialog.Builder(myrecipe.this)
-                        .setTitle("對話視窗")
-                        .setIcon(R.mipmap.ic_launcher)
-                        .setMessage("確定刪除嗎？")
-                        .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                }
-                        )
-                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .show();
-            }
-        }
-    };
 }

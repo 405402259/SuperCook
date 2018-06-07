@@ -23,18 +23,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".favorite">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".find">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".forgetpassword">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,13 +47,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".profile">
+        <activity android:name=".recipes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".recipes">
+        <activity android:name=".newrecipe">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -77,11 +65,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".index">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
