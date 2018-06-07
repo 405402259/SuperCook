@@ -7,10 +7,17 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,13 +28,14 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class find extends AppCompatActivity {
+public class find extends AppCompatActivity implements ChildEventListener {
     private ImageButton search;
     private ImageButton star;
     private ImageButton message;
     private ImageButton person;
-    private EditText clicket;
+
     private EditText et;
+    private String e;
     private List<CheckBox> checkBoxList = new LinkedList<>();
     private CheckBox checkbox1;
     private CheckBox checkbox2;
@@ -35,8 +43,7 @@ public class find extends AppCompatActivity {
     private CheckBox checkbox4;
     private CheckBox checkbox5;
     private ListView mListView;
-    private ArrayAdapter mSearchAdapter;
-    private ArrayList<String> mSearchList = new ArrayList<>();
+    private ArrayAdapter<String> searchList;
     private boolean mIsSearch = false;
 
     @Override
@@ -49,41 +56,6 @@ public class find extends AppCompatActivity {
         ArrayAdapter<String> typeList = new ArrayAdapter<>(find.this, android.R.layout.simple_spinner_dropdown_item, type);
         spinner1.setAdapter(typeList);
 
-        search = findViewById(R.id.search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(find.this,find.class);
-                startActivity(intent);
-            }
-        });
-
-        star = findViewById(R.id.star);
-        star.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(find.this,favorite.class);
-                startActivity(intent);
-            }
-        });
-
-        message = findViewById(R.id.message);
-        message.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(find.this,recipes.class);
-                startActivity(intent);
-            }
-        });
-
-        person = findViewById(R.id.person);
-        person.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(find.this,profile.class);
-                startActivity(intent);
-            }
-        });
 
 
         checkbox1 = (CheckBox) findViewById(R.id.find_sour);
@@ -100,10 +72,51 @@ public class find extends AppCompatActivity {
 
 
 
+        ListView list = (ListView) findViewById(R.id.find_list);
+        searchList = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,android.R.id.text1);
+        list.setAdapter(searchList);
+
+        FirebaseDatabase fireDB = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = fireDB.getReference("recipe");
+        myRef.addChildEventListener(this);
+
+
+        et = (EditText)findViewById( R.id.find_recipeName );
+        e = et.getText().toString();
+
+
+
+
+
 
     }
 
 
+    @Override
+    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        searchList.add(
+                String.valueOf(dataSnapshot.child("recipeName").getValue()));
+    }
 
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+        searchList.remove(
+                String.valueOf(dataSnapshot.child("recipeName").getValue()));
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError) { }
 }
+
+
+
+
+
+
 

@@ -4,24 +4,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.CursorTreeAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-/*
+
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;*/
+import com.google.firebase.database.ValueEventListener;
 
-public class newrecipe extends AppCompatActivity {
+public class newrecipe extends AppCompatActivity implements ChildEventListener {
 
-    /*
+
     private FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase=firebaseDatabase.getReference();
-    private DataSnapshot id;*/
-// ...
+    private DataSnapshot dataSnapshot;
+    private Button add;
+    public EditText recipeName;
+    public AutoCompleteTextView tool;
+    public EditText time;
+    public EditText hard;
+    public AutoCompleteTextView ingredient;
+    public EditText topic;
+    public EditText people;
+    public EditText step;
+    public EditText publisher;
+
+
 
 
     @Override
@@ -34,55 +48,73 @@ public class newrecipe extends AppCompatActivity {
         spinner1.setAdapter(typeList);
 
 
+        add = findViewById(R.id.newrecipe_addNewRecipe);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recipeName=findViewById( R.id.newrecipe_recipeName);
+                tool=(AutoCompleteTextView) findViewById( R.id.newrecipe__tool);
+                time=(EditText)findViewById( R.id.newrecipe__time );
+                hard=(EditText)findViewById( R.id.newrecipe_hard);
+                ingredient=(AutoCompleteTextView) findViewById( R.id.newrecipe__food );
+                topic=(EditText)findViewById( R.id.newrecipe_topic );
+                people=(EditText)findViewById( R.id.newrecipe_people );
+                step=(EditText)findViewById( R.id.newrecipe_step );
+                //publisher=findViewById( R.id.mypage_username ).toString();
 
 
-    }
+                String temp=recipeName.getText().toString();
+                mDatabase.child("recipe").child("6").child("recipeName").setValue(temp);
+                temp=tool.getText().toString();
+                mDatabase.child("recipe").child("8").child("tool").setValue(temp);
+                temp=time.getText().toString();
+                mDatabase.child("recipe").child("8").child("time").setValue(temp);
+                temp=hard.getText().toString();
+                mDatabase.child("recipe").child("8").child("hard").setValue(temp);
+                temp=ingredient.getText().toString();
+                mDatabase.child("recipe").child("8").child("ingredient").setValue(temp);
+                temp=topic.getText().toString();
+                mDatabase.child("recipe").child("8").child("topic").setValue(temp);
+                temp=people.getText().toString();
+                mDatabase.child("recipe").child("8").child("people").setValue(temp);
+                temp=step.getText().toString();
+                mDatabase.child("recipe").child("8").child("step").setValue(temp);
+            }
+        });
 
-    /*private void writeNewRecipe(String recipeName, String tool, String time,
-                              String hard,String ingredient,String type,
-                              String taste,String topic,String people,String step,
-                              String publisher,DataSnapshot id) {
-        String recipeName=findViewById( R.id.newrecipe_recipeName ).toString();
-        String tool=findViewById( R.id.newrecipe__tool).toString();
-        String time=findViewById( R.id.newrecipe__time ).toString()+" min";
-        String hard=findViewById( R.id.newrecipe_hard).toString();
-        String ingredient=findViewById( R.id.newrecipe__food ).toString();
-        String topic=findViewById( R.id.newrecipe_topic ).toString();
-        String people=findViewById( R.id.newrecipe_people ).toString();
-        String step=findViewById( R.id.newrecipe_step ).toString();
-        String publisher=findViewById( R.id.mypage_username ).toString();
-
-
-        Recipe rcp = new Recipe(recipeName,tool,time,hard,ingredient,"中式","salt",topic,people,null,step,null,publisher,true);
-        mDatabase.child("recipe").child(String.valueOf( n(id) )).setValue(rcp);
-
-    }*/
-/*
-    public long n(DataSnapshot dataSnapshot) {
-       return dataSnapshot.getChildrenCount();
-
-    }
-    public void submit(View view){
 
     }
 
     @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
+    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+    }
+
+    @Override
+    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
     }
 
     @Override
     public void onCancelled(DatabaseError databaseError) {
 
-    }*/
-
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        writeNewRecipe(id);
     }
 
-    private void writeNewRecipe(DataSnapshot childrenCount) {
+
+
+
+
+    /*private void writeNewRecipe(DataSnapshot childrenCount) {
         String recipeName=findViewById( R.id.newrecipe_recipeName ).toString();
         String tool=findViewById( R.id.newrecipe__tool).toString();
         String time=findViewById( R.id.newrecipe__time ).toString()+" min";
@@ -95,6 +127,7 @@ public class newrecipe extends AppCompatActivity {
 
 
         Recipe rcp = new Recipe(recipeName,tool,time,hard,ingredient,"中式","salt",topic,people,null,step,null,publisher,true);
-        mDatabase.child("recipe").child(String.valueOf( n(id) )).setValue(rcp);
-    }*/
+        mDatabase.child("recipe").child(String.valueOf( n(id) )).setValue(rcp);*/
+
+
 }
